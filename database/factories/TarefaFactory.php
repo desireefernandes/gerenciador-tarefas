@@ -23,6 +23,9 @@ class TarefaFactory extends Factory
     {
         return [
             //
+            'titulo' => $this->faker->word,
+            'descricao' => $this->faker->sentence,
+            'finalizacao' => $this->faker->date
         ];
     }
 }
