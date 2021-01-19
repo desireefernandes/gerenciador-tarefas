@@ -17,6 +17,9 @@ class CreateTarefasTable extends Migration
             $table->id();
             $table->string('titulo');
             $table->text('descricao')->nullable();
+            $table->date('finalizacao');
+            $table->integer('user_id');
+            //$table->integer('tipo_id');
             $table->timestamps();
         });
     }
