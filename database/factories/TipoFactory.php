@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Tipo;
+use App\Models\Tarefa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TipoFactory extends Factory
@@ -23,6 +24,7 @@ class TipoFactory extends Factory
     {
         return [
             //
+            'tipo' => $this->faker->word
         ];
     }
 }
