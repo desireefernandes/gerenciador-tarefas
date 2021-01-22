@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         
         $this->call([
         	TarefaSeeder::class,
+            TipoSeeder::class,
         ]);
     }
 }
