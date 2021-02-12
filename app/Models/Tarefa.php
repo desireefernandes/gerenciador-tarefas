@@ -12,9 +12,4 @@ class Tarefa extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
-
-    public function tipo()
-    {
-        return $this->hasOne('App\Tipo');
-    }
 }
