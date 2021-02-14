@@ -25,11 +25,10 @@ Route::get('/dashboard',
 	->middleware(['auth'])->name('dashboard');
 
 Route::resource('tarefas', \App\Http\Controllers\TarefaController::class);
+Route::post('/tarefas/novo', [TarefaController::class, 'store'])->name('add-tarefa');
 
-/*Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');*/
 
-Route::post('/tarefas/novo', [TarefaController::class, 'store']);
+Route::resource('tarefa', Tarefa::class);
+Route::get('/tarefas/remover/{tarefa}', [TarefaController::class, 'destroy'])->name('rm-tarefa');
 
 require __DIR__.'/auth.php';
