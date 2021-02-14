@@ -4,29 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TarefaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +17,15 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Tarefa::create([
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao,
+            'finalizacao' => $request->finalizacao,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect('dashboard');
     }
 
     /**
@@ -80,6 +70,8 @@ class TarefaController extends Controller
      */
     public function destroy(Tarefa $tarefa)
     {
-        //
+        $tarefa->delete();
+
+        return redirect('dashboard');
     }
 }

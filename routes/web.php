@@ -13,13 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TarefaController;
+use App\Models\Tarefa;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',
+	[HomeController::class, 'dashboard'])
+	->middleware(['auth'])->name('dashboard');
 
 Route::resource('tarefas', \App\Http\Controllers\TarefaController::class);
+
+/*Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');*/
+
+Route::post('/tarefas/novo', [TarefaController::class, 'store']);
 
 require __DIR__.'/auth.php';
